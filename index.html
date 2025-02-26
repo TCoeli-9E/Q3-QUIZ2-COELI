@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticketing Center</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="wumpus.jpg" alt="Header Image" class="header-image">
+      <h1 class="text-center mt-3">Wumpus's Ticket Center</h1>
+    </div>
+    <div class="d-flex justify-content-between">
+      <div class="card text-white bg-dark" style="width: 30%;">
+        <div class="card-header">
+          <a class="card-link text-white" data-toggle="collapse" href="#personalInfo" aria-expanded="false" aria-controls="personalInfo">
+            Personal Information
+          </a>
+        </div>
+        <div id="personalInfo" class="collapse">
+          <div class="card-body">
+            <form id="personalInfoForm">
+              <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" class="form-control bg-dark text-white" id="fullName" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" class="form-control bg-dark text-white" id="email" required>
+              </div>
+              <button type="button" id="userInfoButton" class="btn btn-secondary btn-block">Show User Info</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="card text-white bg-dark" style="width: 30%;">
+        <div class="card-header">
+          <a class="card-link text-white" data-toggle="collapse" href="#ticketPurchase" aria-expanded="false" aria-controls="ticketPurchase">
+            Ticket Purchasing
+          </a>
+        </div>
+        <div id="ticketPurchase" class="collapse">
+          <div class="card-body">
+            <form id="ticketForm">
+              <div class="form-group">
+                <label for="seatSection">Seat Section:</label>
+                <select class="form-control bg-dark text-white" id="seatSection" required>
+                  <option value="" disabled selected>Select seat section</option>
+                  <option value="Middle">Middle</option>
+                  <option value="Left">Left</option>
+                  <option value="Right">Right</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="rowNumber">Row Number:</label>
+                <select class="form-control bg-dark text-white" id="rowNumber" required>
+                  <option value="" disabled selected>Select row number</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ticketQuantity">Ticket Quantity:</label>
+                <select class="form-control bg-dark text-white" id="ticketQuantity" required>
+                  <option value="" disabled selected>Select quantity</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <button type="button" id="ticketPriceButton" class="btn btn-primary btn-block">Calculate Ticket Price</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="card text-white bg-dark" style="width: 30%;">
+        <div class="card-header">
+          <a class="card-link text-white" data-toggle="collapse" href="#printTicket" aria-expanded="false" aria-controls="printTicket">
+            Print Ticket
+          </a>
+        </div>
+        <div id="printTicket" class="collapse">
+          <div class="card-body text-center">
+            <img src="wumpus.png" alt="Ticket Image" class="img-fluid mb-3">
+            <button type="button" id="thankYouButton" class="btn btn-success btn-block">Thank You</button>
+            <button type="button" id="resetButton" class="btn btn-danger btn-block">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="mt-4 text-center">
+      <p>wumpus's ticket center | all iamges from discord :)</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('userInfoButton').addEventListener('click', function() {
+      const fullNameInput = document.getElementById('fullName');
+      const emailInput = document.getElementById('email');
+
+      
+      const fullName = fullNameInput.value.toUpperCase();
+      fullNameInput.value = fullName;
+
+      
+      window.alert(`Full Name: ${fullName}\nEmail Address: ${emailInput.value}`);
+    });
+
+    document.getElementById('ticketPriceButton').addEventListener('click', function() {
+      const ticketQuantityInput = document.getElementById('ticketQuantity');
+      const fullNameInput = document.getElementById('fullName');
+
+      
+      const fullName = fullNameInput.value.toUpperCase();
+      fullNameInput.value = fullName;
+
+      
+      const ticketQuantity = parseInt(ticketQuantityInput.value, 10);
+      const ticketPrice = ticketQuantity * 10;
+
+      
+      window.alert(`Ticket Price: ${ticketPrice} units`);
+      window.alert(`Thank you ${fullName}. Please proceed to the next section.`);
+    });
+
+    document.getElementById('thankYouButton').addEventListener('click', function() {
+      window.alert('Thank you :3 please check your email for the ticket');
+    });
+
+    document.getElementById('resetButton').addEventListener('click', function() {
+      location.reload();
+    });
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
